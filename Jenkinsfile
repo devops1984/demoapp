@@ -40,7 +40,7 @@ pipeline {
 		stage('Transfer artifact to Ansible') {                               	
                     steps {
 			   sshPublisher(publishers: 
-			      [sshPublisherDesc(configName: 'jenkins', 
+			      [sshPublisherDesc(configName: 'kubernetes', 
 				  transfers: [sshTransfer(cleanRemote: false, 
 				  excludes: '', 
 				  execCommand: 'rsync -avh  /var/lib/jenkins/workspace/demoapp/* --exclude "pom.xml" --exclude "Jenkinsfile" --exclude "demoapp-deploy.yml" --exclude "demoapp-service.yml" --exclude "README.md" --exclude "server"  ansadmin@172.31.8.42:/opt/docker/' ,
