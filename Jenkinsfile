@@ -43,7 +43,7 @@ pipeline {
 			      [sshPublisherDesc(configName: 'jenkins', 
 				  transfers: [sshTransfer(cleanRemote: false, 
 				  excludes: '', 
-				  execCommand: 'rsync -avh  /var/lib/jenkins/workspace/demoapp/* --exclude "pom.xml" --exclude "Jenkinsfile" --exclude "demoapp-deploy.yml" --exclude "demoapp-service.yml" --exclude "README.md" --exclude "server"  ansadmin@172.31.8.42:/opt/docker/' ,
+				  execCommand: 'rsync -avh  /var/lib/jenkins/workspace/demoapp/* --exclude "pom.xml" --exclude "Jenkinsfile" --exclude "demoapp-deploy.yml" --exclude "demoapp-service.yml" --exclude "README.md" --exclude "server"  ansadmin@13.57.203.110:/opt/docker/' ,
 				                
 				  execTimeout: 0, flatten: false, 
 				  makeEmptyDirs: false, noDefaultExcludes: false, 
