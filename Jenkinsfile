@@ -45,7 +45,7 @@ pipeline {
 				  excludes: '', 
 				  execCommand: 'rsync -avh  /var/lib/jenkins/workspace/demoapp/* --exclude "pom.xml" --exclude "Jenkinsfile" --exclude "demoapp-deploy.yml" --exclude "demoapp-service.yml" --exclude "README.md" --exclude "server"  ansadmin@172.31.8.42:/opt/docker/' ,
 				                
-				  execTimeout: 120000, flatten: false, 
+				  execTimeout: 0, flatten: false, 
 				  makeEmptyDirs: false, noDefaultExcludes: false, 
 				  patternSeparator: '[, ]+', 
 				  remoteDirectory: '', remoteDirectorySDF: false, 
