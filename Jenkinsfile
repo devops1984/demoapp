@@ -17,7 +17,7 @@ pipeline {
 			          -Dsonar.login=sqa_3c21c782f53425c2ca8158be94c88b0c642c4622"
                              }
                      }
-               }*/
+               }
 		stage('Upload War to Nexus'){
 		    steps{
 			     nexusArtifactUploader artifacts: [
@@ -36,7 +36,7 @@ pipeline {
 				     repository: 'demo-app', 
 				     version: '1.0.${BUILD_NUMBER}'
 			}
-		}
+		}*/
 		stage('Transfer artifact to Ansible') {                               	
                     steps {
 			   sshPublisher(publishers: 
