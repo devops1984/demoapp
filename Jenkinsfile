@@ -9,7 +9,7 @@ pipeline {
 			     sh " mvn clean package -Dv=${BUILD_NUMBER}"   
 			}
 		}
-		 stage('Sonar Analysis') {
+		 /*stage('Sonar Analysis') {
                      steps {
                       withSonarQubeEnv('Sonarqube') {
                              sh " mvn sonar:sonar \
@@ -17,7 +17,7 @@ pipeline {
 			          -Dsonar.login=sqa_3c21c782f53425c2ca8158be94c88b0c642c4622"
                              }
                      }
-               }
+               }*/
 		stage('Upload War to Nexus'){
 		    steps{
 			     nexusArtifactUploader artifacts: [
@@ -43,7 +43,7 @@ pipeline {
 			      [sshPublisherDesc(configName: 'jenkins', 
 				  transfers: [sshTransfer(cleanRemote: false, 
 				  excludes: '', 
-				  execCommand: 'rsync -avh  /var/lib/jenkins/workspace/k8s-job/* --exclude "pom.xml" --exclude "Jenkinsfile" --exclude "demoapp-deploy.yml" --exclude "demoapp-service.yml" --exclude "README.md" --exclude "server"  ansadmin@172.31.8.42:/opt/docker/' ,
+				  execCommand: 'rsync -avh  /var/lib/jenkins/workspace/demoapp/* --exclude "pom.xml" --exclude "Jenkinsfile" --exclude "demoapp-deploy.yml" --exclude "demoapp-service.yml" --exclude "README.md" --exclude "server"  ansadmin@172.31.8.42:/opt/docker/' ,
 				                
 				  execTimeout: 120000, flatten: false, 
 				  makeEmptyDirs: false, noDefaultExcludes: false, 
@@ -53,7 +53,7 @@ pipeline {
 				  usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
                        }
                 }
-		stage('Transfer artifact to Bootstrap Machine') {                               	
+		/*stage('Transfer artifact to Bootstrap Machine') {                               	
                     steps {
 			   sshPublisher(publishers: 
 			      [sshPublisherDesc(configName: 'jenkins', 
@@ -68,7 +68,7 @@ pipeline {
 				  removePrefix: '', sourceFiles: '')], 
 				  usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
                        }
-                }
+                }*/
 		stage ('Docker Image') {
 			steps{
 			      sshPublisher(publishers: 
