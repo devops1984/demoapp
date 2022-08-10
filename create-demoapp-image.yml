@@ -4,16 +4,16 @@
 
   tasks:
   - name: create docker image using war file
-    command: docker build -t demo-image:latest .
+    command: docker build -t demoapp-image:latest .
     args:
       chdir: /opt/docker
 
   - name: create tag to image
-    command: docker tag demo-image k2r2t2/demo-image
+    command: docker tag demoapp-image k2r2t2/demoapp-image
 
   - name: push image on to dockerhub
-    command: docker push k2r2t2/demo-image
+    command: docker push k2r2t2/demoapp-image
 
   - name: remove docker images form ansible server
-    command: docker rmi demo-image:latest k2r2t2/demo-image
+    command: docker rmi demoapp-image:latest k2r2t2/demoapp-image
     ignore_errors: yes
